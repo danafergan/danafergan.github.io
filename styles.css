@@ -1,0 +1,187 @@
+/* General Reset and Typography */
+:root {
+    --primary-color: #2c3e50;
+    --accent-color: #3498db;
+    --text-color: #333;
+    --bg-color: #f9f9f9;
+    --card-bg: #ffffff;
+    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Navigation */
+header {
+    background-color: var(--card-bg);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    padding: 1rem 0;
+}
+
+.nav-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+nav a:hover, nav a.active {
+    color: var(--accent-color);
+}
+
+/* Main Content */
+main {
+    flex: 1;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+    width: 100%;
+}
+
+h1, h2 {
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+/* Profile Section (Home) */
+.profile-section {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+    margin-bottom: 40px;
+}
+
+.profile-img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+}
+
+.bio-content p {
+    margin-bottom: 1.2rem;
+    font-size: 1.05rem;
+}
+
+/* Publications List */
+.pub-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.pub-item {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid var(--accent-color);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.pub-item.award {
+    border-left-color: #f1c40f; /* Gold for awards */
+    background-color: #ffxf9f0;
+}
+
+.pub-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.pub-authors {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.pub-venue {
+    font-style: italic;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.award-tag {
+    display: inline-block;
+    background-color: #fff8e1;
+    color: #d35400;
+    font-size: 0.85rem;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.pub-links a {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--accent-color);
+    font-size: 0.9rem;
+    margin-right: 15px;
+    font-weight: 600;
+}
+
+.pub-links a:hover {
+    text-decoration: underline;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #888;
+    font-size: 0.9rem;
+    margin-top: auto;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .profile-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    
+    .nav-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
