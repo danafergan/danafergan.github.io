@@ -1,106 +1,166 @@
-/* General Reset and Typography */
+/* ========================================= */
+/* 1. VARIABLES & THEME SETUP                */
+/* ========================================= */
 :root {
-    --primary-color: #2c3e50;
-    --accent-color: #3498db;
-    --text-color: #333;
-    --bg-color: #f9f9f9;
-    --card-bg: #ffffff;
-    --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Light Mode (Default) */
+    --bg-body: #F3F4F6;         /* Slightly cooler gray */
+    --bg-card: #FFFFFF;
+    --text-main: #1F2937;       /* Nearly black */
+    --text-muted: #6B7280;      /* Medium gray */
+    --primary: #111827;         /* Heading color */
+    --accent: #2563EB;          /* Google Blue */
+    --accent-hover: #1D4ED8;
+    --border: #E5E7EB;
+    --nav-bg: rgba(255, 255, 255, 0.85); /* For Glassmorphism */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    
+    /* Award Colors */
+    --award-bg: #FFFBEB;
+    --award-border: #FCD34D;
+    --award-text: #92400E;
+
+    --font-main: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* Dark Mode Overrides (Auto-detect) */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --bg-body: #0F1115;      /* Deep OLED black/gray */
+        --bg-card: #181B21;      /* Slightly lighter for cards */
+        --text-main: #E5E7EB;
+        --text-muted: #9CA3AF;
+        --primary: #F9FAFB;
+        --accent: #60A5FA;       /* Lighter blue for dark mode */
+        --accent-hover: #93C5FD;
+        --border: #2D3139;
+        --nav-bg: rgba(15, 17, 21, 0.85);
+        --shadow-sm: none;
+        --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+
+        --award-bg: #2C2610;     /* Darker gold background */
+        --award-border: #854D0E;
+        --award-text: #FDE68A;
+    }
 }
+
+/* ========================================= */
+/* 2. CORE LAYOUT                            */
+/* ========================================= */
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: var(--font-main);
-    color: var(--text-color);
-    background-color: var(--bg-color);
+    color: var(--text-main);
+    background-color: var(--bg-body);
     line-height: 1.6;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Navigation */
+/* ========================================= */
+/* 3. STICKY "GLASS" NAVIGATION              */
+/* ========================================= */
 header {
-    background-color: var(--card-bg);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--nav-bg);
+    backdrop-filter: blur(12px); /* The "Frosted Glass" effect */
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
     padding: 1rem 0;
+    transition: all 0.3s ease;
 }
 
 .nav-container {
-    max-width: 900px;
+    max-width: 850px;
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 24px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .logo {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 700;
-    color: var(--primary-color);
+    color: var(--primary);
     text-decoration: none;
+    letter-spacing: -0.02em;
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 24px;
 }
 
 nav a {
     text-decoration: none;
-    color: var(--text-color);
+    color: var(--text-muted);
     font-weight: 500;
-    transition: color 0.3s ease;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
 }
 
 nav a:hover, nav a.active {
-    color: var(--accent-color);
+    color: var(--accent);
 }
 
-/* Main Content */
+/* ========================================= */
+/* 4. MAIN CONTENT                           */
+/* ========================================= */
 main {
     flex: 1;
-    max-width: 900px;
-    margin: 40px auto;
-    padding: 0 20px;
+    max-width: 850px;
+    margin: 48px auto;
+    padding: 0 24px;
     width: 100%;
 }
 
 h1, h2 {
-    color: var(--primary-color);
-    margin-bottom: 1rem;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+    line-height: 1.2;
 }
 
-/* Profile Section (Home) */
+/* Profile Section */
 .profile-section {
-    display: flex;
-    gap: 40px;
-    align-items: flex-start;
-    margin-bottom: 40px;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 48px;
+    align-items: start;
+    margin-bottom: 60px;
 }
 
 .profile-img {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    border-radius: 12px; /* Slightly squared is more modern than circle */
     object-fit: cover;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    flex-shrink: 0;
+    box-shadow: var(--shadow-md);
+}
+
+.bio-content h1 {
+    font-size: 2.25rem;
+    margin-bottom: 1rem;
 }
 
 .bio-content p {
-    margin-bottom: 1.2rem;
+    margin-bottom: 1.5rem;
     font-size: 1.05rem;
+    color: var(--text-muted);
 }
 
-/* Publications List */
+/* ========================================= */
+/* 5. PUBLICATIONS CARDS                     */
+/* ========================================= */
 .pub-list {
     display: flex;
     flex-direction: column;
@@ -108,80 +168,125 @@ h1, h2 {
 }
 
 .pub-item {
-    background: var(--card-bg);
-    padding: 20px;
-    border-radius: 8px;
-    border-left: 4px solid var(--accent-color);
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    background: var(--bg-card);
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
+.pub-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--accent); /* Subtle interaction cue */
+}
+
+/* Award Styling */
 .pub-item.award {
-    border-left-color: #f1c40f; /* Gold for awards */
-    background-color: #ffxf9f0;
+    background-color: var(--bg-card);
+    border: 1px solid var(--award-border);
+    position: relative;
+    overflow: hidden;
 }
 
-.pub-title {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--primary-color);
-    margin-bottom: 5px;
-}
-
-.pub-authors {
-    font-size: 0.95rem;
-    color: #555;
-    margin-bottom: 5px;
-}
-
-.pub-venue {
-    font-style: italic;
-    color: #666;
-    margin-bottom: 10px;
+.pub-item.award::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background-color: var(--award-border);
 }
 
 .award-tag {
     display: inline-block;
-    background-color: #fff8e1;
-    color: #d35400;
-    font-size: 0.85rem;
-    padding: 2px 8px;
-    border-radius: 4px;
+    background-color: var(--award-bg);
+    color: var(--award-text);
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 999px; /* Pill shape */
     font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 12px;
+}
+
+/* Typography in Cards */
+.pub-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 8px;
+    line-height: 1.4;
+}
+
+.pub-authors {
+    font-size: 0.95rem;
+    color: var(--text-muted);
     margin-bottom: 8px;
 }
 
-.pub-links a {
-    display: inline-block;
-    text-decoration: none;
-    color: var(--accent-color);
+.pub-venue {
     font-size: 0.9rem;
-    margin-right: 15px;
+    font-style: italic;
+    color: var(--text-muted);
+    opacity: 0.8;
+    margin-bottom: 16px;
+}
+
+/* "Pill" Buttons for Links */
+.pub-links {
+    display: flex;
+    gap: 12px;
+}
+
+.pub-links a {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: var(--accent);
+    background-color: transparent;
+    font-size: 0.85rem;
     font-weight: 600;
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    transition: all 0.2s ease;
 }
 
 .pub-links a:hover {
-    text-decoration: underline;
+    background-color: var(--accent);
+    color: #FFFFFF;
+    border-color: var(--accent);
 }
 
-/* Footer */
+/* ========================================= */
+/* 6. FOOTER & RESPONSIVE                    */
+/* ========================================= */
 footer {
     text-align: center;
-    padding: 20px;
-    color: #888;
-    font-size: 0.9rem;
+    padding: 40px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
     margin-top: auto;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
     .profile-section {
-        flex-direction: column;
-        align-items: center;
+        grid-template-columns: 1fr;
+        justify-items: center;
         text-align: center;
+        gap: 32px;
     }
     
     .nav-container {
         flex-direction: column;
-        gap: 15px;
+        gap: 16px;
+    }
+
+    .bio-content h1 {
+        font-size: 2rem;
     }
 }
