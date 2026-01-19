@@ -139,14 +139,41 @@ h1, h2 {
     margin-bottom: 60px;
 }
 
+/* Sidebar Column (Image + Links) */
+.profile-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
 .profile-img {
     width: 200px;
     height: 200px;
-    border-radius: 12px; /* Slightly squared is more modern than circle */
+    border-radius: 12px;
     object-fit: cover;
     box-shadow: var(--shadow-md);
 }
 
+.sidebar-links {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sidebar-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.sidebar-links a:hover {
+    color: var(--accent);
+    text-decoration: underline;
+}
+
+/* Bio Content */
 .bio-content h1 {
     font-size: 2.25rem;
     margin-bottom: 1rem;
@@ -156,6 +183,18 @@ h1, h2 {
     margin-bottom: 1.5rem;
     font-size: 1.05rem;
     color: var(--text-muted);
+}
+
+.bio-content a {
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease;
+}
+
+.bio-content a:hover {
+    border-bottom-color: var(--accent);
 }
 
 /* ========================================= */
@@ -288,5 +327,9 @@ footer {
 
     .bio-content h1 {
         font-size: 2rem;
+    }
+    
+    .sidebar-links {
+        align-items: center;
     }
 }

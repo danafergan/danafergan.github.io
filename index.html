@@ -10,19 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="styles.css">
-
-    <style>
-        .bio-content a {
-            color: var(--accent); /* Uses the Blue defined in styles.css */
-            text-decoration: none;
-            font-weight: 500;
-            border-bottom: 1px solid transparent;
-            transition: border-color 0.2s ease;
-        }
-        .bio-content a:hover {
-            border-bottom-color: var(--accent);
-        }
-    </style>
 </head>
 <body>
 
@@ -33,8 +20,6 @@
                 <ul>
                     <li><a href="index.html" class="active">Home</a></li>
                     <li><a href="publications.html">Publications</a></li>
-                    <li><a href="Daniel_Afergan_CV.pdf">CV</a></li>
-                    <li><a href="https://scholar.google.com/citations?user=C2lVQO8AAAAJ" target="_blank">Google Scholar</a></li>
                 </ul>
             </nav>
         </div>
@@ -42,21 +27,31 @@
 
     <main>
         <div class="profile-section">
-            <img src="dan.jpg" alt="Dan Afergan" class="profile-img">
+            
+            <div class="profile-sidebar">
+                <img src="dan.jpg" alt="Dan Afergan" class="profile-img">
+                
+                <div class="sidebar-links">
+                    <a href="mailto:web@danafergan.com">Email</a>
+                    <a href="http://linkedin.com/in/danafergan">LinkedIn</a>
+                    <a href="https://scholar.google.com/citations?user=C2lVQO8AAAAJ" target="_blank">Google Scholar</a>
+                    <a href="Daniel_Afergan_web_resume.pdf">Resume</a>
+                </div>
+            </div>
             
             <div class="bio-content">
                 <h1>About Me</h1>
                 <p>
-                    I am a software engineer at Google (<a href="https://www.youtube.com/">YouTube</a>) working on user-facing GenAI tools. My broader research interests include adaptive user interfaces and human performance.
+                    I am a Staff Software Engineer and Tech Lead Manager at Google (YouTube) working on user-facing Conversational AI tools for recommendations. Previously at Google, I worked on automated UI design, YouTube mobile UI components, and incorporating user feedback into ML pipelines and recommendation systems. My broader research interests include adaptive user interfaces and human performance.
                 </p>
                 <p>
-                    I received my Ph.D. in Computer Science in 2015 at Tufts University with Professors <a href="https://www.cs.tufts.edu/~jacob/">Robert Jacob</a> and <a href="https://www.cs.tufts.edu/~remco/">Remco Chang</a> at the <a href="https://hci.tufts.edu/">Tufts Human-Computer Interaction (HCI) Lab</a>, focusing on brain-computer interfaces and using functional near-infrared spectroscopy (fNIRS) for adaptive systems. I also studied visualization and collaborated with the <a href="https://valt.cs.tufts.edu/">Visual Analytics Lab</a> at Tufts.
+                    I received my Ph.D. in Computer Science from Tufts University, where I was advised by Professor <a href="https://www.cs.tufts.edu/~jacob/">Robert Jacob</a> at the <a href="https://hci.tufts.edu/">Tufts Human-Computer Interaction (HCI) Lab</a>. My dissertation focused on brain-computer interfaces and using functional near-infrared spectroscopy (fNIRS) for adaptive systems. I also studied visualization and collaborated with <a href="https://www.cs.tufts.edu/~remco/">Remco Chang</a> and the <a href="https://valt.cs.tufts.edu/">Visual Analytics Lab</a> at Tufts.
                 </p>
                 <p>
-                    I graduated from the University of Pennsylvania with a B.A. in Cognitive Science with minors in Psychology & Computer Science and Engineering in 2005. I received an M.S. in Computer Science from The George Washington University in 2009.
+                    I hold a B.A. in Cognitive Science with minors in Psychology and Computer Science from the University of Pennsylvania, and an M.S. in Computer Science from The George Washington University.
                 </p>
                 <p>
-                    From 2005 to 2010 I worked at the <a href="https://www.nrl.navy.mil/">U.S. Naval Research Laboratory</a> in the Warfighter Human System Integration Laboratory, working on immersive virtual environment training systems for Marine Corps infantry training and researching physiological measurements of performance.
+                    Before my Ph.D., I worked at the <a href="https://www.nrl.navy.mil/">U.S. Naval Research Laboratory</a> in the Warfighter Human System Integration Laboratory. There, I developed immersive virtual environment training systems for Marine Corps infantry and researched physiological measurements of performance.
                 </p>
             </div>
         </div>
